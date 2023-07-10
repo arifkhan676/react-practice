@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Book from './Book';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+
+  state = {
+    book: [
+      { Bookname: "Rachel", Author: "Micel" },
+      { Bookname: "Paradoxical", Author: "Ariof Azad" }
+    ]
+  }
+
+  onChange = (bookname) => {
+    this.setState({
+      book: [
+        { Bookname: bookname, Author: "Ahmed Shamim" },
+        { Bookname: "X Company", Author: "Arif Bro" }
+      ],
+      otherProp: "I am some other props"
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello Arif</h1>
+        <button onClick={() => this.onChange("Rich Dad Poor Dad")}  > Click to change </button>
+        <Book Bookname={this.state.book[0].Bookname} Author={this.state.book[0].Author} />
+        <Book Bookname={this.state.book[1].Bookname} Author={this.state.book[1].Author} Name={this.onChange} />
+
+      </div>
+    );
+  }
+
 }
+
+
 
 export default App;
