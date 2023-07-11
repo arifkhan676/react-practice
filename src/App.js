@@ -16,21 +16,30 @@ class App extends Component {
   onChange = (bookname) => {
     this.setState({
       book: [
-        { Bookname: bookname, Author: "Ahmed Shamim" },
-        { Bookname: "X Company", Author: "Arif Bro" }
+        { Bookname: "Software", Author: "Ahmed Shamim" },
+        { Bookname: "X Company", Author: "Arif Bro" },
+        { Bookname: "y Company", Author: " Bro" }
       ],
       otherProp: "I am some other props"
     })
   }
 
   render() {
+
+    const BookState = this.state.book;
+    const BookList = BookState.map((item) => {
+      return (
+        <Book Bookname={item.Bookname} Author={item.Author} />
+      );
+    });
+    console.log(BookList);
+
+
     return (
       <div className="App">
         <h1>Hello Arif</h1>
         <button onClick={() => this.onChange("Rich Dad Poor Dad")}  > Click to change </button>
-        <Book Bookname={this.state.book[0].Bookname} Author={this.state.book[0].Author} />
-        <Book Bookname={this.state.book[1].Bookname} Author={this.state.book[1].Author} Name={this.onChange} />
-
+        {BookList}
       </div>
     );
   }
