@@ -1,17 +1,15 @@
 import React from 'react';
-import '../../App.css';
+import '../AllCSSFile/App.css';
 
-const Book = (props) => {
+const Book = ({ book, clickBuy }) => {
     const date = new Date().getFullYear();
 
     return (
-        <div className="App">
-            <button style={{ color: "red" }} onClick={props.delete} > Delete to the booklist </button>
-            <h1> Bookname: {props.Bookname}  </h1>
-            <h1> Author : {props.Author} </h1>
+        <div className="AppX" onClick={() => clickBuy(book.id)} >
+            <h3> Bookname: {book.Bookname}  </h3>
+            <h3> Author : {book.Author} </h3>
             <p>  Published in : {date} </p>
-            <input type="text" onChange={props.inputName} />
-            {/* <button onClick={handleclick} >change Book Name</button> */}
+            <button  > New Book </button>
 
         </div>
     );
