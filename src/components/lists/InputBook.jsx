@@ -12,35 +12,47 @@ class InputBook extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            inputVal: ""
+            Bookname: "",
+            Writer: "",
+            Description: ""
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange = (e) => {
-        const val = e.target.value;
+        const name = e.target.name;
+        const value = e.target.value;
         this.setState(
-            { inputVal: val }
+            { [name]: value }
         );
     }
+    handleClick = (e) => {
+
+        console.log(this.state)
+        e.preventDefault()
+
+    }
+
 
     render() {
         return (
 
             <div>
-                <form action="">
+                <form action="" onSubmit={this.handleClick}>
 
                     <label > Bookname </label>
                     <br />
-                    <input type="text" name='Bookname' onChange={() => { this.handleChange() }} value={this.inputVal} />
+                    <input type="text" name='Bookname' onChange={this.handleChange} value={this.Bookname} />
                     <br />
-                    <p>{this.inputVal}</p>
+
                     <label > Writer </label>
                     <br />
-                    <input type="text" name='Writer' />
+                    <input type="text" name='Writer' onChange={this.handleChange} value={this.Writer} />
                     <br />
                     <label > Description </label>
                     <br />
-                    <input type="text" name='Description' />
+                    <input type="text" name='Description' onChange={this.handleChange} value={this.Description} />
                     <br />
                     <input type="submit" />
                 </form>

@@ -5,8 +5,10 @@ import SignIn from './components/SignIn';
 import { NavLink } from 'react-router-dom';
 import PrivateRoute from './components/Auth/PrivateRoute'
 import './components/AllCSSFile/App.css'
+import NewBook from './components/lists/NewBook';
+import InputBook from './components/lists/InputBook';
 
-const App = () => {
+const App = (props) => {
   return (
     <div>
 
@@ -17,12 +19,18 @@ const App = () => {
         <li>
           <NavLink to='/Maincomponent'> Book List </NavLink>
         </li>
+        <li>
+          <NavLink to='/Input'> Input Book</NavLink>
+        </li>
       </nav>
 
       <Routes>
         <Route path='/' element={<SignIn />}>  </Route>
         <Route element={<PrivateRoute />}>
           <Route path='/Maincomponent' element={<MainComp />}>  </Route>
+          <Route path='/book' element={<NewBook selectBook={props.clicktoBuy} />}>  </Route>
+          <Route path='/Input' element={<InputBook />}>  </Route>
+
         </Route>
       </Routes>
 

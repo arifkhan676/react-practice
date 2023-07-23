@@ -9,7 +9,6 @@ class Books extends Component {
                 return (
                     <Book
                         book={item}
-
                         key={item.id}
                         clickBuy={this.props.clickBuy}
                     />
