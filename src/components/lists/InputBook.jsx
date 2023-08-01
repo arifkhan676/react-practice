@@ -1,6 +1,16 @@
-import React, { Component } from 'react'
+import axios from 'axios';
+import React, { Component, createRef } from 'react'
+
+
+
 
 class InputBook extends Component {
+
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/todos/')
+            .then(response => console.log(response.data))
+
+    }
 
     /* const [inputVal, setInput] = useState();
  
@@ -11,12 +21,9 @@ class InputBook extends Component {
      console.log(inputVal); */
     constructor(props) {
         super(props)
-        this.state = {
-            Bookname: "",
-            Writer: "",
-            Description: ""
-        }
-        this.handleChange = this.handleChange.bind(this);
+        this.Bookname = createRef();
+        this.Writer = createRef();
+        this.Description = createRef();
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -29,7 +36,11 @@ class InputBook extends Component {
     }
     handleClick = (e) => {
 
-        console.log(this.state)
+        console.log(this.Bookname.current.value);
+        console.log(this.Writer.current.value);
+        console.log(this.Description.current.value);
+
+
         e.preventDefault()
 
     }
@@ -43,16 +54,15 @@ class InputBook extends Component {
 
                     <label > Bookname </label>
                     <br />
-                    <input type="text" name='Bookname' onChange={this.handleChange} value={this.Bookname} />
+                    <input type="text" name='Bookname' ref={this.Bookname} />
                     <br />
-
                     <label > Writer </label>
                     <br />
-                    <input type="text" name='Writer' onChange={this.handleChange} value={this.Writer} />
+                    <input type="text" name='Writer' ref={this.Writer} />
                     <br />
                     <label > Description </label>
                     <br />
-                    <input type="text" name='Description' onChange={this.handleChange} value={this.Description} />
+                    <input type="text" name='Description' ref={this.Description} />
                     <br />
                     <input type="submit" />
                 </form>

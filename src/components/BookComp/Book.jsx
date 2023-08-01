@@ -3,6 +3,9 @@ import '../AllCSSFile/App.css';
 //import { Link } from 'react-router-dom'
 
 const Book = ({ book, clickBuy }) => {
+
+
+
     const date = new Date().getFullYear();
 
     return (
